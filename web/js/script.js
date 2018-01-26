@@ -1,9 +1,9 @@
-if (typeof web3 !== 'undefined') {
-	web3 = new Web3(web3.currentProvider);
-} else {
+// if (typeof web3 !== 'undefined') {
+// 	web3 = new Web3(web3.currentProvider);
+// } else {
 	// set the provider you want from Web3.providers
-	web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-}
+	web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+// }
 
 var UnanimousConsent;
 
@@ -114,7 +114,7 @@ function nonceOpAddActionInstantiation(form) {
 			web3.sha3('getNonceCompareOp()').slice(0, 10)
 			);
 
-	#('#NonceOpAddAction').append(
+	('#NonceOpAddAction').append(
 			'<tr><td>' +
 			hash +
 			'</td><td>' +
@@ -170,14 +170,15 @@ function addNonceOpAddress(rawTransaction) {
 		var filter = web3.eth.filter('latest');
 		filter.watch(function (error, result) {
 			var receipt = web3.eth.getTransactionReceipt(hash);
-			if (receipt && receipt.transactionHash == hash && ) {
+			//TODO: missing && on the line beloew- view original checkout
+			if (receipt && receipt.transactionHash == hash) {
 				if (receipt.logs.topics && receipt.logs.topics.length >= 2) {
 					// Assumption made is that NonceCompareOpSingleton has an indexed event 
 					// that gives the address of the newly created NonceCompareOp and no other										 // events are fired (this can be modified)
 					localStorage.setItem('nonceCompareOpAddress', '0x' + receipt.logs.topics[1].slice(-40));
 				}
 			}
-		}
+		})
 		});
 		}
 

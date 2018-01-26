@@ -1,6 +1,6 @@
-BUILD_DIR = web/js/compiled/
+BUILD_DIR = "web/js/compiled/"
 OUTPUT = $(BUILD_DIR)code.js
-SOLC = web/node_modules/.bin/solcjs
+SOLC = "web/node_modules/.bin/solcjs"
 CONTRACTS = $(addprefix contracts/,$(addsuffix .sol, \
 			UnanimousConsent CallLib BulletinBoard \
 			CompareOp Adjudicator Rules NonceCompareOp \

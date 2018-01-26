@@ -6,6 +6,7 @@
   "author": "Ledger Labs",
   "license": "MIT",
   "dependencies": {
-    "solc": "^0.3.6"
+    "solc": "^0.3.6",
+    "web3": "0.20.4"
   }
 }
